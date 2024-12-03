@@ -8,6 +8,7 @@ import {
   pgTableCreator,
   timestamp,
   varchar,
+  pgTable, serial, text, 
 } from "drizzle-orm/pg-core";
 
 /**
@@ -35,4 +36,10 @@ export const images = createTable(
     nameIndex: index("name_idx").on(example.name),
   })
 );
+//创建base表
+export const bases = pgTable("bases", {
+  id: serial("id").primaryKey(),
+  name: varchar("name", { length: 255 }),
+  created_at: text("created_at").default("now()"), // 可用 timestamp
+});
 
