@@ -38,7 +38,7 @@ export const images = createTable(
 );
 //创建base表
 export const bases = pgTable("bases", {
-  id: serial("id").primaryKey(),
+  id: text("id").primaryKey(), // 使用随机字符串作为主键
   name: varchar("name", { length: 255 }),
   created_at: text("created_at").default("now()"), // 可用 timestamp
 });
