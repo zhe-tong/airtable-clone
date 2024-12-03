@@ -23,9 +23,10 @@ export default function RootLayout({
   return (
     <ClerkProvider>
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>
+      <body className={`font-sans ${inter.variable} h-screen flex flex-col`}>
         <TopNav />
-        {children}</body>
+        <div className="flex-1">{children}</div>
+        </body>
     </html>
     </ClerkProvider>
   );

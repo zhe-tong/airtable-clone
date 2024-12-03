@@ -8,10 +8,11 @@ export const dynamic = "force-dynamic";
 
 async function Text() {
   return (
-    <div>
-      <div className="flex flex-wrap gap-4">THIS IS HOME PAGE</div>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <h1 className="text-4xl font-semibold">Digital operations for the AI era</h1>
+      <h2 className="mt2 text-lg">Create modern business apps to manage and automate critical processes.</h2>
       <Link href="/dashboard">
-        <button style={{ padding: '10px', background: 'orange', color: 'white', border: 'none', borderRadius: '5px' }}>
+        <button style={{ padding: '10px', background: 'black', color: 'white', border: 'none', borderRadius: '5px' }}>
           Go to Dashboard Page
         </button>
       </Link>

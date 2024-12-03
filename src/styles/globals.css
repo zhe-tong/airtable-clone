@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply bg-black text-white;
+  @apply bg-white text-black;
 }
 .button {
   background-color: #1d4ed8;
@@ -16,3 +16,13 @@ body {
 .button:hover {
   background-color: #2563eb;
 }
+.topnav {
+  height: 56px;
+  position: fixed; /* 如果想固定在页面顶部 */
+  width: 100%;
+  z-index: 100; /* 确保在其他元素之上 */
+}
+.sidebar-container {
+  margin-top: 56px; /* 确保不会被挤压 */
+}
+

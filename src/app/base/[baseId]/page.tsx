@@ -17,7 +17,7 @@ export default async function BasePage({ params }: BasePageProps) {
     .execute();
 
   if (base.length === 0) {
-    return <div>Base not found</div>;
+    return <div>Base length is 0</div>;
   }
 
   return (
