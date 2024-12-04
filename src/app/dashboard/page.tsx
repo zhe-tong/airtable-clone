@@ -2,7 +2,7 @@
 
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation"; // 用于导航
+import { useRouter } from "next/navigation";
 
 type Base = {
   id: string;

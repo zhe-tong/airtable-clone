@@ -18,11 +18,11 @@ body {
 }
 .topnav {
   height: 56px;
-  position: fixed; /* 如果想固定在页面顶部 */
+  position: fixed;
   width: 100%;
-  z-index: 100; /* 确保在其他元素之上 */
+  z-index: 100;
 }
 .sidebar-container {
-  margin-top: 56px; /* 确保不会被挤压 */
+  margin-top: 56px;
 }
 

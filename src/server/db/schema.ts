@@ -17,29 +17,23 @@ import {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const createTable = pgTableCreator((name) => `airtable-clone_${name}`);
+// export const createTable = pgTableCreator((name) => `airtable-clone_${name}`);
 
-export const images = createTable(
-  "image",
-  {
-    id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
-    name: varchar("name", { length: 256 }).notNull(),
-    url: varchar("url", { length: 1024 }).notNull(),
-    createdAt: timestamp("created_at", { withTimezone: true })
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).$onUpdate(
-      () => new Date()
-    ),
-  },
-  (example) => ({
-    nameIndex: index("name_idx").on(example.name),
-  })
-);
+
 //创建base表
 export const bases = pgTable("bases", {
   id: text("id").primaryKey(), // 使用随机字符串作为主键
   name: varchar("name", { length: 255 }),
   created_at: text("created_at").default("now()"), // 可用 timestamp
 });
+
+export const tables = pgTable("tables", {
+  id: text("id").primaryKey(), // 随机生成的字符串作为主键
+  name: varchar("name", { length: 255 }).notNull(), // 形式为 "table1", "table2", ...
+  baseId: text("base_id")
+    .notNull()
+    .references(() => bases.id), // 外键，关联到 bases 表
+  created_at: timestamp("created_at").defaultNow(),
+});
+
 
