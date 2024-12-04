@@ -14,10 +14,17 @@ export default function TablePage({ params }: { params: { baseId: string; tableI
   // 获取单个 table 的数据
   const fetchTable = async () => {
     try {
+      console.log("Fetching table for ID:", tableId); // 调试信息
       const response = await fetch(`/api/getTable?tableId=${tableId}`);
+      
+      console.log(`/api/getTable?tableId=${tableId}`);
+
       if (response.ok) {
         const data = await response.json();
+        console.log("Fetched Table:", data); // 检查 API 返回的数据
         setTable(data);
+      } else {
+        console.error("API Error:", response.status, response.statusText);
       }
     } catch (error) {
       console.error("Error fetching table:", error);
@@ -25,10 +32,15 @@ export default function TablePage({ params }: { params: { baseId: string; tableI
   };
 
   useEffect(() => {
-    fetchTable();
-  }, []);
+    if (tableId) {
+      fetchTable();
+    }
+  }, [tableId]);
 
-  if (!table) return <div>Loading...</div>;
+  if (!table) {
+    console.log("Loading table state:", table);
+    return <div>Loading table...</div>;
+  }
 
   return (
     <div>
